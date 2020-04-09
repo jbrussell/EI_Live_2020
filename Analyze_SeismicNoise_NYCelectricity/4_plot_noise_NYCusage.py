@@ -38,7 +38,9 @@ color = 'tab:blue'
 ax1.plot(df_noise.t_cent,df_noise.disp_avg*1e9,'-',linewidth=2,color=color)
 # ax1.plot(df_noise.t_cent,df_noise.disp_avg.rolling(8*7,win_type='boxcar').mean()*1e9,'-',linewidth=2,color='black')
 ax1.plot([nyc_SAH, nyc_SAH],[0, 2.1],'--k',linewidth=3)
+ax1.text(nyc_SAH+timedelta(4.5),0.1,'Stay at \nhome order',fontsize=18,horizontalalignment='center')
 ax1.plot([nyc_1st, nyc_1st],[0, 2.1],'--',linewidth=3,color='gray')
+ax1.text(nyc_1st-timedelta(3.5),0.1,'First NYC \nfatality',color='gray',fontsize=18,horizontalalignment='center')
 ax1.set_ylabel('Average Ground Displacement (nm) 5-15 Hz',fontsize=23,color=color)
 ax1.set_xlabel('Date',fontsize=23)
 ax1.set_xlim([tmin, tmax])
@@ -46,8 +48,7 @@ ax1.set_ylim(0,2.1)
 ax1.tick_params(axis='y', labelcolor=color)
 # ax1.grid(True)
 ax1.set_title('Seismic Noise in Central Park and N.Y.C. Electricity Consumption',fontsize=25)
-ax1.text(nyc_SAH+timedelta(4.5),0.1,'Stay at \nhome order',fontsize=18,horizontalalignment='center')
-ax1.text(nyc_1st-timedelta(3.5),0.1,'First NYC \nfatality',color='gray',fontsize=18,horizontalalignment='center')
+ax1.tick_params('both', length=10, which='major')
 
 ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
 color = 'tab:red'
@@ -57,9 +58,10 @@ ax2.plot()
 ax2.tick_params(axis='y', labelcolor=color)
 ax2.set_ylabel('Electricity Use Relative to Previous 4 Years (%)',fontsize=23,color=color)
 ax2.set_ylim(-40,15)
+ax2.tick_params('both', length=10, which='major')
 
 # Rotate tick marks on x-axis
-plt.setp(ax1.get_xticklabels(), rotation=45)
+plt.setp(ax1.get_xticklabels(), rotation=45, horizontalalignment='right')
 
 plt.tight_layout()
 plt.show()
