@@ -24,15 +24,21 @@ df = pd.read_csv(fname,parse_dates=['t_cent'])
 nyc_SAH = datetime(2020,3,22,20,0) + timedelta(0,4*60*60)
 
 fig = plt.figure(figsize=(15,10))
-plt.plot(df.t_cent,df.disp_avg*1e9,'-',linewidth=2)
-plt.plot([nyc_SAH, nyc_SAH],[0, 2],'--r')
+plt.plot(df.t_cent,df.disp_avg*1e9,'-',linewidth=2.5,label='Hourly')
+plt.plot(df.t_cent,df.disp_avg.rolling(8*1,win_type='boxcar').mean()*1e9,'-',linewidth=4,color='tab:red',label='Daily')
+# plt.plot([nyc_SAH, nyc_SAH],[0, 2],'--r')
 plt.ylabel('Average Ground Displacement (nm)',fontsize=23)
 plt.xlabel('Date',fontsize=23)
-plt.grid(True)
+# plt.title('Central Park LD.CPNY.BHZ (5-15 Hz)')
+# plt.grid(True)
 plt.xlim([tmin, tmax])
+plt.tick_params('both', length=10, which='major')
+plt.legend()
 
 # Rotate tick marks on x-axis
-plt.setp(plt.gca().get_xticklabels(), rotation=45)
+plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
+plt.tight_layout()
 plt.show()
+fig.savefig('CPNY.5_15Hz.pdf')
 
