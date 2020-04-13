@@ -25,7 +25,12 @@ nyc_SAH = datetime(2020,3,22,20,0) + timedelta(0,4*60*60)
 
 fig = plt.figure(figsize=(15,10))
 plt.plot(df.t_cent,df.disp_avg*1e9,'-',linewidth=2.5,label='Hourly')
-plt.plot(df.t_cent,df.disp_avg.rolling(8*1,win_type='boxcar').mean()*1e9,'-',linewidth=4,color='tab:red',label='Daily')
+
+# Calculate daily averages using boxcar window
+dt_hr = (df.t_cent[1]-df.t_cent[0]).seconds/60/60  # Hours between samples
+daily_average = df.disp_avg.rolling(int(24/dt_hr),win_type='boxcar').mean()*1e9
+plt.plot(df.t_cent,daily_average,'-',linewidth=4,color='tab:red',label='Daily')
+
 # plt.plot([nyc_SAH, nyc_SAH],[0, 2],'--r')
 plt.ylabel('Average Ground Displacement (nm)',fontsize=23)
 plt.xlabel('Date',fontsize=23)
