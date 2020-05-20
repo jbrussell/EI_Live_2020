@@ -1,0 +1,26 @@
+Folder M9.1 :: 
+Contains data from 3 stations that recorded the Magnitude 9.1 Tohoku earthquake in 2011. Each record contains 7 hours of data recorded at a sample rate of 20 Hz.
+earthquake latitude  = 38.297
+earthquake longitude = 142.373
+
+STATION 1 - MAJO
+Station in Matsushiro, Japan approximately 416 km (3.75 degrees) from the earthquake.
+latitude  = 36.54567
+longitude = 138.20406
+
+STATION 2 - P39A 
+Station in Salisbury, MO, USA approximately 9700 km (87.3 degrees) from the earthquake.
+latitude  = 39.4877
+longitude = -92.7549
+
+STATION 3 - TRQA
+Station in Tornquist, Argentina approximately 17900 km (160.9 degrees) from the earthquake.
+latitude  = -38.0568
+longitude = -61.9787
+
+————————————————————
+
+Folder M7.3 :: 
+Contains data for the same 3 stations as above, but for a Magnitude 7.3 foreshock that occurred 2 days before the M9.1 in approximately the same location.
+earthquake latitude  = 38.435
+earthquake longitude = 142.842
