@@ -223,6 +223,7 @@ class AudioPlayerModel(bkm.layouts.WidgetBox):
                        is_xtrue = True,
                        is_ytrue = True,
                        time_true_factor = 3600,  # Default to hours
+                       high_res_spec = False,
                        ):
         """
         Sonify data and plot waveform as well as spectrogram.
@@ -305,11 +306,13 @@ class AudioPlayerModel(bkm.layouts.WidgetBox):
             time_series_plot.add_layout(bkm.LinearAxis(y_range_name="data_dis",axis_label=ywav_axis_label_true),'left')
         
         # Spectrogram
-#         nperseg = int(0.05*fs_sound) # The length of each frame (should be expressed in samples)
-#         noverlap = int(nperseg*0.7) # The overlapping between successive frames (should be expressed in samples)
-#         nfft = int(nperseg*3)
-#         f, t, Sxx = signal.spectrogram(data_dis, fs_sound, nperseg=nperseg, noverlap=noverlap, nfft=nfft)
-        f, t, Sxx = signal.spectrogram(data_dis, fs_sound)
+        if high_res_spec == True:
+            nperseg = int(0.01*fs_sound*TargetDuration) # The length of each frame (should be expressed in samples)
+            noverlap = int(nperseg*0.7) # The overlapping between successive frames (should be expressed in samples)
+            nfft = int(nperseg*2)
+            f, t, Sxx = signal.spectrogram(data_dis, fs_sound, nperseg=nperseg, noverlap=noverlap, nfft=nfft)
+        else:
+            f, t, Sxx = signal.spectrogram(data_dis, fs_sound)            
         # T = np.linspace(1/f[-1],1/f[1],len(f))
         # ip = interp2d(t, f, Sxx); zi = ip(t, T)
         # Sxx = zi
