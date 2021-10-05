@@ -1,8 +1,8 @@
 ## Earth Institute LIVE 2020
 This repository holds codes developed for the K-12 [EI Live](https://www.earth.columbia.edu/videos/channel/k12-education) 2020 series presented in two parts in May 2020. 
-\\
+
 [Part 1 of 2: Data Storytelling in Python (Grades 10-12)](https://www.earth.columbia.edu/videos/view/part-1-of-2-data-storytelling-in-python-grades-10-12)
-\\
+
 [Part 2 of 2: A Deep Dive into Earthquake Sonification with Python](https://www.earth.columbia.edu/videos/view/part-2-of-2-a-deep-dive-into-earthquake-sonification-with-python-grades-10-12)
 
 These Jupyter Notebooks produce interactive plots (via Bokeh and HoloViews), which allow students to explore the data on their own. The presentations are aimed at grades 10--12. The full walkthrough and interactive plots can be found here: https://jbrussell.github.io/eilive2020/
